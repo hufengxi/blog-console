@@ -1,0 +1,32 @@
+<div id="header">
+    <div class="app-overflow app-pointer app-inline-block user-name">
+        hufengxi
+        <div class="user-drop-down"> 
+            退出
+        </div>
+    </div>
+    
+</div>
+<div id="service-content">
+    <d-accordion [data]="menu" id="menu" [linkType]="'routerLink'" [restrictOneOpen]="true" ></d-accordion>
+    <div id="menu-content">
+        <div style="width: 100%; height: 100%; padding: 20px;">
+            <div *ngFor="let item of tableInfo.srcData" style="background: #fff; padding: 10px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <!-- 文章标题 -->
+                    <div>
+                        {{item.title}}
+                    </div>
+                    <!-- 更新时间 -->
+                    <div>
+                        {{item.updateTime}}
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                    <!-- 操作 -->
+                    <div>编辑 | 浏览 | 删除</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
