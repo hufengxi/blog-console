@@ -66,4 +66,8 @@ export class LoginComponent implements OnInit, LeValidator {
       }
     );
   }
+
+  public goRegister() {
+    this.router.navigate(["/user/register"]);
+  }
 }

@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { UserInfo } from "@shared/interface/base.interface";
 import { ArticleUtilService } from "@shared/service/article/article.util.service";
 import { BaseUtilService } from "@shared/util/base.util.service";
+import { CookieUtilService } from "@shared/util/cookie.util";
 
 @Component({
   selector: "app-article-list",
@@ -13,7 +14,8 @@ export class ArticleListComponent implements OnInit {
   constructor(
     private router: Router,
     private articleUtil: ArticleUtilService,
-    private baseUtil: BaseUtilService
+    private baseUtil: BaseUtilService,
+    private cookieUtil: CookieUtilService
   ) {}
 
   ngOnInit(): void {
@@ -30,25 +32,56 @@ export class ArticleListComponent implements OnInit {
   ];
   // 用户信息
   public userInfo: UserInfo = this.baseUtil.getUserInfo();
-  //
+  // table 信息
   public tableInfo: any = {
     srcData: [],
-    pageSize: {
-      offset: 0,
-      limit: 1,
-      total: 0,
+  };
+  public pager = {
+    total: 0,
+    pageIndex: 1,
+    pageSize: 10,
+    pageSizeOptions: [10, 20, 50],
+    pageChange: () => {
+      this.loadData();
     },
   };
+  // 操作
+  public actionMenus = [
+    {
+      title: "编辑",
+      click: (item: any) => {
+        this.router.navigate(["/article/create"], {
+          queryParams: {
+            id: item._id,
+          },
+        });
+      },
+    },
+    {
+      title: "浏览",
+      click: (item: any) => {
+        this.baseUtil.navigateNewTab([`article/detail/${item._id}`]);
+      },
+    },
+    {
+      title: "删除",
+      click: () => {},
+    },
+  ];
 
   public loadData() {
     this.loadArticle();
   }
 
+  public goCreateArticle() {
+    this.router.navigate(["/article/create"]);
+  }
+
   // 加载文章列表
   public loadArticle() {
     const params: any = {
-      limit: 1,
-      offset: 0,
+      limit: this.pager.pageSize,
+      offset: this.pager.pageSize * (this.pager.pageIndex - 1),
     };
     if (this.userInfo._id) {
       params.userId = this.userInfo._id;
@@ -56,12 +89,16 @@ export class ArticleListComponent implements OnInit {
     this.articleUtil.getDecodeArticleList$(params).subscribe(
       (res) => {
         this.tableInfo.srcData = res.items || [];
-        this.tableInfo.pageSize.total = res.total;
-        console.log(res);
+        this.pager.total = res.total || 0;
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+
+  public logOut() {
+    this.cookieUtil.remove("authorization");
+    this.router.navigate(["/user/login"]);
   }
 }

@@ -1,0 +1,90 @@
+<div
+  style="
+    width: 100%;
+    height: 40px;
+    background-color: #464c59;
+    padding: 0 calc(50% - 606px);
+    display: flex;
+    align-items: center;
+  "
+>
+  <span class="subtitle-back" style="margin-top: 4px">
+    <i
+      (click)="goBack()"
+      class="icon-collapse xf-link xf-pointer"
+      style="font-size: 20px; color: #fff"
+    ></i>
+  </span>
+
+  <span style="color: #fff; font-size: 16px; margin-left: 10px">{{
+    title
+  }}</span>
+</div>
+
+<div style="width: 100%; margin-top: 20px; overflow: hidden">
+  <div
+    style="
+      width: 1212px;
+      height: calc(100vh - 160px);
+      min-height: 500px;
+      margin: 0px auto 100px;
+      background: #fff;
+      padding: 20px 30px;
+    "
+  >
+    <form
+      dForm
+      [layout]="layoutDirection"
+      [labelSize]="'sm'"
+      [formGroup]="articleForm"
+      style="height: 100%"
+    >
+      <d-form-item>
+        <d-form-label [required]="true">标题</d-form-label>
+        <input
+          dTextInput
+          placeholder="请输入文章标题"
+          formControlName="title"
+          [dValidateRules]="articleFormRules.title"
+        />
+      </d-form-item>
+      <d-form-item style="height: calc(100% - 48px)">
+        <d-form-label>内容</d-form-label>
+        <textarea
+          dTextarea
+          placeholder="请输入文章内容，内容为 markdown 格式"
+          formControlName="body"
+          [dValidateRules]="articleFormRules.body"
+          style="height: 100%"
+        ></textarea>
+      </d-form-item>
+    </form>
+  </div>
+  <div
+    style="
+      position: fixed;
+      bottom: 0px;
+      background: #fff;
+      height: 80px;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 1280px;
+        height: 100%;
+      "
+    >
+      <d-button bsStyle="danger" bsSize="lg" (btnClick)="save()">{{
+        btnText
+      }}</d-button>
+    </div>
+  </div>
+</div>
