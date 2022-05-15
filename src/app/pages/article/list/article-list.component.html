@@ -1,32 +1,53 @@
-<div id="header">
-    <div class="app-overflow app-pointer app-inline-block user-name">
-        hufengxi
-        <div class="user-drop-down"> 
-            退出
-        </div>
+<div class="article-container">
+  <div style="display: flex; justify-content: space-between;margin: 20px 20px 10px;">
+    <div>
+      <d-button icon="icon-edit" (click)="goCreateArticle()">写文章</d-button>
     </div>
-    
-</div>
-<div id="service-content">
-    <d-accordion [data]="menu" id="menu" [linkType]="'routerLink'" [restrictOneOpen]="true" ></d-accordion>
-    <div id="menu-content">
-        <div style="width: 100%; height: 100%; padding: 20px;">
-            <div *ngFor="let item of tableInfo.srcData" style="background: #fff; padding: 10px;">
-                <div style="display: flex; justify-content: space-between;">
-                    <!-- 文章标题 -->
-                    <div>
-                        {{item.title}}
-                    </div>
-                    <!-- 更新时间 -->
-                    <div>
-                        {{item.updateTime}}
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: flex-end;">
-                    <!-- 操作 -->
-                    <div>编辑 | 浏览 | 删除</div>
-                </div>
-            </div>
-        </div>
+    <div>
+      <d-search [isKeyupSearch]="true" (searchFn)="onSearch($event)" style="margin-right: 12px;"></d-search>
+      <d-button class="app-icon-bottom" icon="icon-refresh" [bordered]="true" [disabled]="loading" bsStyle="common"
+        bsSize="xs" (click)="refresh()"></d-button>
     </div>
+  </div>
+  <div dLoading [showLoading]="loading" [backdrop]="false" [message]="'加载中...'" [positionType]="'relative'">
+
+    <div *ngFor="let item of tableInfo.srcData" class="article-item">
+      <div style="border-bottom: 1px solid #e5e6eb; padding: 15px 0px">
+        <div style="display: flex; justify-content: space-between">
+          <!-- 文章标题 -->
+          <div class="xf-overflow" style="
+              max-width: 500px;
+              font-size: 16px;
+              font-weight: 500;
+              color: #555666;
+            ">
+            {{ item.title }}
+          </div>
+          <!-- 操作 -->
+          <div>
+            <span *ngFor="let action of actionMenus" (click)="action.click(item)"
+              class="xf-inline-block xf-mr-2x xf-pointer xf-link">
+              {{ action.title }}
+            </span>
+          </div>
+        </div>
+        <div class="xf-mt-3x" style="display: flex;">
+          <!-- 更新时间 -->
+          <div class="xf-overflow" style="max-width: 250px; color: #999; font-size: 14px">
+            {{ item.createTime }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin: 10px 20px;">
+      <d-pagination [size]="'sm'" [total]="pager.total" [(pageSize)]="pager.pageSize" [(pageIndex)]="pager.pageIndex"
+        [pageSizeOptions]="pager.pageSizeOptions" (pageIndexChange)="pager.pageChange()"
+        (pageSizeChange)="pager.pageChange()" [canViewTotal]="true" [canChangePageSize]="true" [canJumpPage]="true"
+        [maxItems]="5" [autoHide]="true">
+      </d-pagination>
+    </div>
+
+  </div>
 </div>

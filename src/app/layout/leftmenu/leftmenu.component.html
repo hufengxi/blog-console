@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<d-accordion
+  [data]="menu"
+  id="menu"
+  [linkType]="'routerLink'"
+  [restrictOneOpen]="true"
+></d-accordion>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

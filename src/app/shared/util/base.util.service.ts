@@ -1,15 +1,12 @@
 import { ElementRef, Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { UserInfo } from "@shared/interface/base.interface";
+import { Router, UrlCreationOptions } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
 })
 export class BaseUtilService {
-  constructor() {}
-
-  // 用户信息
-  public userInfo: UserInfo = {} as UserInfo;
+  constructor(private router: Router) {}
 
   public checkForm(formGroup: FormGroup, elementRef: ElementRef): boolean {
     if (!formGroup?.controls) {
@@ -38,14 +35,16 @@ export class BaseUtilService {
     return true;
   }
 
-  // 配置用户信息
-  public setUserInfo(userInfo: UserInfo) {
-    this.userInfo = userInfo;
-    (window as any).authorization = `Bearer ${userInfo.token}`;
-  }
-
-  // 获取用户信息
-  public getUserInfo(): UserInfo {
-    return this.userInfo;
+  // navigate跳转到新的tab页面
+  public navigateNewTab(
+    commands: any[],
+    navigationExtras?: UrlCreationOptions
+  ) {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(commands, navigationExtras)
+    );
+    // 第三个参数是防止网络钓鱼攻击
+    let opener = window.open(`/taosha${url}`, "_blank", "noopener");
+    opener = null;
   }
 }

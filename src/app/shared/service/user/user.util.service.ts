@@ -3,16 +3,23 @@ import { Observable } from "rxjs";
 import { UserApiService } from "@shared/service/user/user.api.service";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
 export class UserUtilService {
-    constructor(private userApi: UserApiService) { }
+  constructor(private userApi: UserApiService) {}
 
-    // 用户登录
-    public login$(body: any): Observable<any> {
-        return this.userApi.login$(body);
-    }
+  // 用户登录
+  public login$(body: any): Observable<any> {
+    return this.userApi.login$(body);
+  }
 
+  // 用户注册
+  public register$(body: any): Observable<any> {
+    return this.userApi.register$(body);
+  }
 
-
+  // 获取用户信息
+  public queryUserInfo$(): Observable<any> {
+    return this.userApi.getUserInfo$();
+  }
 }

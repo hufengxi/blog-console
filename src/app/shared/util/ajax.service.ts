@@ -1,28 +1,50 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { CookieUtilService } from "./cookie.util";
+
+const ORIGIN = "https://www.boruonuo.com/api/taosha";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
 export class AjaxService {
-    constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cookieUtil: CookieUtilService
+  ) {}
 
-    public get(url: string, options: any = {}): Observable<any> {
-        return this.http.get(url, this.setHeaderAhthor(options));
+  public get(url: string, options: any = {}): Observable<any> {
+    return this.http.get(`${ORIGIN}${url}`, this.setHeaderAhthor(options));
+  }
+
+  public post(url: string, body: any = {}, options: any = {}): Observable<any> {
+    return this.http.post(
+      `${ORIGIN}${url}`,
+      body,
+      this.setHeaderAhthor(options)
+    );
+  }
+
+  public put(url: string, body: any = {}, options: any = {}): Observable<any> {
+    return this.http.put(
+      `${ORIGIN}${url}`,
+      body,
+      this.setHeaderAhthor(options)
+    );
+  }
+
+  public delete(url: string, options: any = {}): Observable<any> {
+    return this.http.delete(`${ORIGIN}${url}`, this.setHeaderAhthor(options));
+  }
+
+  public setHeaderAhthor(options: any = {}): any {
+    const headers: any = {};
+    headers.authorization = this.cookieUtil.get("authorization");
+
+    if (headers?.authorization) {
+      options.headers = { ...(options?.headers ?? {}), ...headers };
     }
-
-    public post(url: string, body: any = {}, options: any = {}): Observable<any> {
-        return this.http.post(url, body, this.setHeaderAhthor(options));
-    }
-
-    public setHeaderAhthor(options: any = {}): any {
-        const headers: any = {};
-        headers.authorization = (window as any).authorization;
-        if (headers?.authorization) {
-            options.headers = { ...(options?.headers ?? {}), ...headers };
-        }
-        return options;
-    }
-
+    return options;
+  }
 }

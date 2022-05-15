@@ -1,0 +1,27 @@
+.subtitle-back:after {
+  content: "";
+  position: absolute;
+  height: 14px;
+  top: 14px;
+  border-right: 1px solid #dfe1e6;
+}
+
+.go-back ::ng-deep {
+  cursor: pointer;
+
+  .devui-icon-container {
+    vertical-align: middle;
+  }
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.go-back:hover ::ng-deep {
+  transform: scale(1.3, 1.3);
+
+  i {
+    color: #5e7ce0;
+  }
+}

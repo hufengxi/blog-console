@@ -1,0 +1,54 @@
+<div style="width: 100%; text-align: center; padding: 50px">
+  <div class="xf-card" style="width: 500px; display: inline-block; padding: 30px; border-radius: 4px;">
+    <div style="text-align: center">
+      <h1 style="color: #393b3d; font-weight: 300">荒野淘沙用户注册</h1>
+    </div>
+    <div class="xf-mt-6x" [formGroup]="registerForm">
+      <!-- 邮箱 -->
+      <div>
+        <input dTextInput formControlName="email" placeholder="邮箱" [size]="'lg'" />
+      </div>
+      <!-- 手机号 -->
+      <div class="xf-mt-5x">
+        <input dTextInput formControlName="tel" placeholder="手机号" [size]="'lg'" />
+      </div>
+      <!-- 昵称 -->
+      <div class="xf-mt-5x">
+        <input autocomplete='off' dTextInput formControlName="nickname" placeholder="昵称" [size]="'lg'" />
+      </div>
+      <!-- 密码 -->
+      <div class="xf-mt-5x">
+        <d-form-control [suffixTemplate]="passTemp">
+          <input autocomplete='new-password' dTextInput formControlName="password" placeholder="密码" [size]="'lg'"
+            name="inputPassword" [type]="showPassword ? 'text' : 'password'" />
+        </d-form-control>
+
+        <ng-template #passTemp>
+          <i class="xf-font-16" [class]="
+              showPassword ? 'icon icon-preview' : 'icon icon-preview-forbidden'
+            " (click)="showPassword = !showPassword"></i>
+        </ng-template>
+      </div>
+      <!-- 确认密码 -->
+      <div class="xf-mt-5x">
+        <d-form-control [suffixTemplate]="confPassTemp">
+          <input dTextInput formControlName="confPassword" placeholder="确认密码" [size]="'lg'" name="inputPassword"
+            [type]="showConfPassword ? 'text' : 'password'" />
+        </d-form-control>
+
+        <ng-template #confPassTemp>
+          <i class="xf-font-16" [class]="
+              showConfPassword
+                ? 'icon icon-preview'
+                : 'icon icon-preview-forbidden'
+            " (click)="showConfPassword = !showConfPassword"></i>
+        </ng-template>
+      </div>
+    </div>
+    <div class="xf-mt-6x xf-text-center">
+      <d-button bsSize="lg" (btnClick)="register()">注册</d-button>
+      <div style="text-align: right;">已有账户，<span (click)="goLogin()"
+          style="color: #7693f5; cursor: pointer;">立即登录</span></div>
+    </div>
+  </div>
+</div>

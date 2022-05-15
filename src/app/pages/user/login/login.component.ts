@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LeValidator } from "@shared/interface/form-interface";
+import { UserSharedService } from "@shared/service/user/user.shared.service";
 import { UserUtilService } from "@shared/service/user/user.util.service";
-import { BaseUtilService } from "@shared/util/base.util.service";
 
 @Component({
   selector: "app-login",
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, LeValidator {
     private fb: FormBuilder,
     private router: Router,
     private userUtil: UserUtilService,
-    private baseUtil: BaseUtilService
+    private userShared: UserSharedService
   ) {}
 
   ngOnInit(): void {
@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit, LeValidator {
     this.userUtil.login$(this.loginData).subscribe(
       (data) => {
         if (data.token) {
-          this.baseUtil.setUserInfo(data);
-          this.router.navigate(["article/list"]);
+          this.userShared.setUserInfo(data);
+          this.router.navigate(["/article/list"]);
           return;
         }
         this.userPassError = true;
@@ -65,5 +65,9 @@ export class LoginComponent implements OnInit, LeValidator {
         this.userPassError = true;
       }
     );
+  }
+
+  public goRegister() {
+    this.router.navigate(["/register"]);
   }
 }

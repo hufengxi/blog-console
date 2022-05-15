@@ -1,7 +1,9 @@
 export interface UserInfo {
   _id: string;
-  username: string;
-  nickName: string;
+  email: string;
+  tel: string;
+  nickname: string;
+  facepath: string;
   intro: string;
   token: string;
 }

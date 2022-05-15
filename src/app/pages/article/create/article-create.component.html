@@ -1,0 +1,12 @@
+<div style="width: 100%; height: 60px; background: #fff; display: flex; align-items: center; padding: 0 30px">
+  <d-icon class="go-back" (click)="goBack()" [icon]="'icon-collapse'"></d-icon>
+  <div style="width: 50%" [formGroup]="articleForm">
+    <input style="font-size: 20px; border: none" dTextInput placeholder="请输入文章标题" formControlName="title" />
+  </div>
+  <div style="width: 50%">
+    <d-button icon="icon-download" style="float: right; margin-left: 12px;" (click)="downZip()">下载</d-button>
+    <d-button icon="icon-publish" style="float: right" (click)="save()">发布</d-button>
+  </div>
+</div>
+<app-markdown-editor height="calc(100vh - 60px)" [formCfg]="markdownFormCfg" [markdown]="markdown">
+</app-markdown-editor>

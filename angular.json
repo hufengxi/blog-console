@@ -52,14 +52,22 @@
             "inlineStyleLanguage": "less",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/image"
             ],
             "styles": [
               "src/styles.less",
               "node_modules/ng-devui/devui.min.css",
-              "node_modules/@devui-design/icons/icomoon/devui-icon.css"
+              "node_modules/@devui-design/icons/icomoon/devui-icon.css",
+              "src/assets/md_editor/css/editormd.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "src/assets/md_editor/editormd.min.js",
+              "src/assets/md_editor/lib/marked.min.js",
+              "src/assets/md_editor/lib/prettify.min.js"
+            ]
+
           },
           "configurations": {
             "production": {

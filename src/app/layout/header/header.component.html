@@ -1,0 +1,23 @@
+<div class="header-container">
+  <div class="header">
+    <!-- left -->
+    <div class="header-left">
+      <span class="logo"></span>
+      <span class="blog-name">荒野淘沙</span>
+      <span class="create-center">创作中心</span>
+    </div>
+    <!-- right -->
+    <div class="xf-pointer header-right">
+      <img class="face" [src]="userInfo?.facepath ||'./assets/image/default-head.png'" />
+      <div class="drop-down">
+        <div class="nickname-container ">
+          <div class="nickname xf-overflow">{{ userInfo?.nickname }}</div>
+        </div>
+        <div *ngFor="let option of userOptions" (click)="option.click()" class="drop-item">
+          <d-icon [icon]="option.icon" class="icon"></d-icon>
+          {{ option.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

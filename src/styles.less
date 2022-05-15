@@ -1,130 +1,168 @@
+@import "~ng-devui/styles-var/devui-var.less";
+
+@base-space: 4px;
+
 body,
 html {
-  height: 100%;
+  background-color: #eef0f5;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 #J_container {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  min-width: 1280px;
+  overflow: visible !important;
   background-color: #eef0f5;
 }
 
-#J_container {
-  min-width: 1280px;
-  overflow: visible !important;
-}
-
-.app-card {
+.xf-card {
   border: 0 !important;
   background: #fff;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 8%);
   border-radius: 2px;
 }
 
-.app-absolute {
-  position: absolute;
+.xf-title-15 {
+  font-size: 15px;
+  font-weight: bold;
 }
 
-.app-relative {
-  position: relative;
+.xf-absolute {
+  position: absolute !important;
 }
 
-.app-mt-4 {
-  margin-top: 4px;
+.xf-relative {
+  position: relative !important;
 }
 
-.app-mt-8 {
-  margin-top: 8px;
+.xf-mt-1x {
+  margin-top: @base-space !important;
 }
 
-.app-mt-12 {
-  margin-top: 12px;
+.xf-mt-2x {
+  margin-top: @base-space * 2 !important;
 }
 
-.app-mt-16 {
-  margin-top: 16px;
+.xf-mt-3x {
+  margin-top: @base-space * 3 !important;
 }
 
-.app-mt-20 {
-  margin-top: 20px;
+.xf-mt-4x {
+  margin-top: @base-space * 4 !important;
 }
 
-.app-mt-24 {
-  margin-top: 24px;
+.xf-mt-5x {
+  margin-top: @base-space * 5 !important;
 }
 
-.app-ml-4 {
-  margin-left: 4px;
+.xf-mt-6x {
+  margin-top: @base-space * 6 !important;
 }
 
-.app-ml-8 {
-  margin-left: 8px;
+.xf-ml-1x {
+  margin-left: @base-space !important;
 }
 
-.app-ml-12 {
-  margin-left: 12px;
+.xf-ml-2x {
+  margin-left: @base-space * 2 !important;
 }
 
-.app-ml-16 {
-  margin-left: 16px;
+.xf-ml-3x {
+  margin-left: @base-space * 3 !important;
 }
 
-.app-ml-20 {
-  margin-left: 20px;
+.xf-ml-4x {
+  margin-left: @base-space * 4 !important;
 }
 
-.app-ml-24 {
-  margin-left: 24px;
+.xf-ml-5x {
+  margin-left: @base-space * 5 !important;
 }
 
-.app-mr-4 {
-  margin-right: 4px;
+.xf-ml-6x {
+  margin-left: @base-space * 6 !important;
 }
 
-.app-mr-8 {
-  margin-right: 8px;
+.xf-mr-1x {
+  margin-right: @base-space !important;
 }
 
-.app-mr-12 {
-  margin-right: 12px;
+.xf-mr-2x {
+  margin-right: @base-space * 2 !important;
 }
 
-.app-mr-16 {
-  margin-right: 16px;
+.xf-mr-3x {
+  margin-right: @base-space * 3 !important;
 }
 
-.app-mr-20 {
-  margin-right: 20px;
+.xf-mr-4x {
+  margin-right: @base-space * 4 !important;
 }
 
-.app-mr-24 {
-  margin-right: 24px;
+.xf-mr-5x {
+  margin-right: @base-space * 5 !important;
 }
 
-.app-font-16 {
-  font-size: 16px;
+.xf-mr-6x {
+  margin-right: @base-space * 6 !important;
 }
 
-.app-text-center {
-  text-align: center;
+.xf-font-16 {
+  font-size: 16px !important;
 }
 
-.app-width-full {
-  width: 100%;
+.xf-text-center {
+  text-align: center !important;
 }
 
-.app-inline-block {
-  display: inline-block;
+.xf-width-full {
+  width: 100% !important;
 }
 
-.app-pointer {
-  cursor: pointer;
+.xf-inline-block {
+  display: inline-block !important;
 }
 
-.app-overflow {
+.xf-pointer {
+  cursor: pointer !important;
+}
+
+.xf-overflow {
   text-overflow: ellipsis;
   overflow: hidden;
   display: inline-block;
   white-space: nowrap;
 }
+
+.xf-link:hover {
+  color: #7693f5 !important;
+  text-decoration: none !important;
+}
+
+.app-icon-bottom {
+  vertical-align: top;
+}
+
+.editormd-preview,
+.markdown-body ul {
+  list-style-type: disc !important;
+}
+
+.editormd-preview,
+.markdown-body ol {
+  list-style-type: decimal !important;
+}
+
+input:-webkit-autofill {
+  /* 浏览器记住密码的底色的颜色 */
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  /* 浏览器记住密码的字的颜色 */
+  -webkit-text-fill-color: #606266 !important;
+  /* 通过延时渲染背景色变相去除背景颜色 */
+  transition: background-color 3000s ease-in-out 0s;
+}
+
