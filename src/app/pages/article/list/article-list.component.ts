@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserInfo } from "@shared/interface/base.interface";
 import { ArticleUtilService } from "@shared/service/article/article.util.service";
+import { UserSharedService } from "@shared/service/user/user.shared.service";
 import { BaseUtilService } from "@shared/util/base.util.service";
 import { CookieUtilService } from "@shared/util/cookie.util";
 
@@ -15,23 +16,15 @@ export class ArticleListComponent implements OnInit {
     private router: Router,
     private articleUtil: ArticleUtilService,
     private baseUtil: BaseUtilService,
-    private cookieUtil: CookieUtilService
+    private userShared: UserSharedService
   ) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  // 菜单
-  public menu = [
-    {
-      title: "文章",
-      link: "/article/list",
-      router: ["article/listm"],
-    },
-  ];
   // 用户信息
-  public userInfo: UserInfo = this.baseUtil.getUserInfo();
+  public userInfo: UserInfo = this.userShared.getUserInfo();
   // table 信息
   public tableInfo: any = {
     srcData: [],
@@ -50,7 +43,7 @@ export class ArticleListComponent implements OnInit {
     {
       title: "编辑",
       click: (item: any) => {
-        this.router.navigate(["/article/create"], {
+        this.router.navigate(["/create/article"], {
           queryParams: {
             id: item._id,
           },
@@ -60,7 +53,7 @@ export class ArticleListComponent implements OnInit {
     {
       title: "浏览",
       click: (item: any) => {
-        this.baseUtil.navigateNewTab([`article/detail/${item._id}`]);
+        this.baseUtil.navigateNewTab([`/detail/article/${item._id}`]);
       },
     },
     {
@@ -74,7 +67,7 @@ export class ArticleListComponent implements OnInit {
   }
 
   public goCreateArticle() {
-    this.router.navigate(["/article/create"]);
+    this.router.navigate(["/create/article"]);
   }
 
   // 加载文章列表
@@ -95,10 +88,5 @@ export class ArticleListComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-
-  public logOut() {
-    this.cookieUtil.remove("authorization");
-    this.router.navigate(["/user/login"]);
   }
 }

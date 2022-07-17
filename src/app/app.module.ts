@@ -6,17 +6,21 @@ import { MarkdownModule } from "ngx-markdown";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { LoginModule } from "@user/login/login.module";
+import LeftMenuModule from "./layout/leftmenu/leftmenu.module";
+import FullModule from "./layout/full/full.module";
+
+const ANGULAR = [
+  HttpClientModule,
+  BrowserAnimationsModule,
+  BrowserModule,
+  AppRoutingModule,
+  MarkdownModule.forRoot(),
+];
+const MODULE = [LeftMenuModule, FullModule];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    HttpClientModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    AppRoutingModule,
-    MarkdownModule.forRoot(),
-  ],
+  imports: [...ANGULAR, ...MODULE],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -17,4 +17,9 @@ export class UserApiService {
   public register$(body: any): Observable<any> {
     return this.ajax.post("http://localhost:3000/user", body);
   }
+
+  // 获取用户信息
+  public getUserInfo$(): Observable<any> {
+    return this.ajax.get("http://localhost:3000/user");
+  }
 }

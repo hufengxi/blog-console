@@ -10,10 +10,10 @@ import { ArticleListRoutingModule } from "@article/list/article-list-routing.mod
 
 const COMPONENT = [ArticleListComponent];
 
-const DEVUI = [AccordionModule, PaginationModule, ButtonModule];
+const DEVUI = [PaginationModule, ButtonModule];
 
 @NgModule({
   declarations: [...COMPONENT],
   imports: [CommonModule, ...DEVUI, ArticleListRoutingModule],
 })
-export class UserArticleListModule {}
+export class ArticleListModule {}

@@ -17,4 +17,9 @@ export class UserUtilService {
   public register$(body: any): Observable<any> {
     return this.userApi.register$(body);
   }
+
+  // 获取用户信息
+  public queryUserInfo$(): Observable<any> {
+    return this.userApi.getUserInfo$();
+  }
 }

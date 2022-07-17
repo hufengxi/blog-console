@@ -1,0 +1,40 @@
+#header {
+  width: 100%;
+  height: 50px;
+  min-width: 1260px;
+  position: fixed;
+  z-index: 100000000;
+  background: #252b3a;
+  color: #adb0b8;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+.user-name {
+  float: right;
+  max-width: 200px;
+  padding: 0 10px;
+}
+
+.user-drop-down {
+  display: none;
+  width: 200px;
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  background: #464c59;
+  text-align: center;
+}
+
+.drop-item:hover {
+  color: #fff;
+}
+
+.user-name:hover {
+  color: #fff;
+  background: #464c59;
+
+  .user-drop-down {
+    display: inline-block;
+  }
+}
