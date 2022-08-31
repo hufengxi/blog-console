@@ -53,21 +53,23 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/image"
+              "src/assets/image",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ace-builds/src-min",
+                "output": "./assets/ace-builds/"
+              }
             ],
             "styles": [
               "src/styles.less",
               "node_modules/ng-devui/devui.min.css",
               "node_modules/@devui-design/icons/icomoon/devui-icon.css",
-              "src/assets/md_editor/css/editormd.css"
+              "node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "src/assets/md_editor/editormd.min.js",
-              "src/assets/md_editor/lib/marked.min.js",
-              "src/assets/md_editor/lib/prettify.min.js"
+              "node_modules/ngx-markdown-editor/assets/highlight.js/highlight.min.js",
+              "node_modules/ngx-markdown-editor/assets/marked.min.js"
             ]
-
           },
           "configurations": {
             "production": {

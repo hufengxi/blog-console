@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MarkdownEditorComponent } from "@shared/components/markdown-editor/markdown-editor.component";
 import { UserResolveService } from "@shared/guards/user.resolve.service";
 import FullComponent from "./layout/full/full.component";
 import LeftMenuComponent from "./layout/leftmenu/leftmenu.component";

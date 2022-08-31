@@ -10,7 +10,10 @@
         <d-icon icon="icon-time" style="vertical-align: sub; margin-right: 5px;"></d-icon>{{articleItem?.createTime}}
       </span>
     </div>
-    <div id="markdown-content"></div>
+    <app-ngx-markdown-editor [content]="articleItem?.body || ''" [mode]="'preview'">
+    </app-ngx-markdown-editor>
+
+    <!-- <div id="markdown-content"></div> -->
   </div>
   <div *ngIf="catalogues.length" style="width: 300px;">
     <!-- right -->

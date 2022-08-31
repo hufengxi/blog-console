@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CookieUtilService } from "./cookie.util";
 
-const ORIGIN = "https://www.boruonuo.com/api/taosha";
+const ORIGIN = "http://localhost:3000";
 
 @Injectable({
   providedIn: "root",
