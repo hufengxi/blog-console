@@ -7,7 +7,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import LeftMenuModule from "./layout/leftmenu/leftmenu.module";
 import FullModule from "./layout/full/full.module";
-import { MarkdownEditorModule } from "@shared/components/markdown-editor/markdown-editor.module";
 import {
   APP_BASE_HREF,
   HashLocationStrategy,
@@ -20,7 +19,7 @@ const ANGULAR = [
   BrowserModule,
   AppRoutingModule,
 ];
-const MODULE = [LeftMenuModule, FullModule, MarkdownEditorModule];
+const MODULE = [LeftMenuModule, FullModule];
 
 @NgModule({
   declarations: [AppComponent],

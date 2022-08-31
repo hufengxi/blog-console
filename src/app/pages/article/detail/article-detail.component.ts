@@ -33,7 +33,7 @@ export class ArticleDetailComponent
   }
 
   ngAfterViewInit(): void {
-    this.initEditor();
+    // this.initEditor();
   }
 
   ngAfterViewChecked(): void {
@@ -55,7 +55,7 @@ export class ArticleDetailComponent
       (data) => {
         this.loading = false;
         this.articleItem = data;
-        this.initEditor();
+        // this.initEditor();
       },
       (err) => {
         console.log(err);
@@ -77,8 +77,9 @@ export class ArticleDetailComponent
   }
 
   private initSideCatalogue() {
-    const doms =
-      this.ele.nativeElement.querySelector("#markdown-content").childNodes;
+    const doms = this.ele.nativeElement.querySelector(
+      "#ngx-markdown-editor .preview-panel"
+    ).childNodes;
     if (!doms.length || this.catalogues.length) {
       return;
     }

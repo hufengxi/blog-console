@@ -9,8 +9,8 @@ import { FormModule } from "ng-devui/form";
 import { TextInputModule } from "ng-devui/text-input";
 import { TextareaModule } from "ng-devui/textarea";
 import { ButtonModule } from "ng-devui/button";
-import { MarkdownEditorModule } from "@shared/components/markdown-editor/markdown-editor.module";
 import { IconModule } from "ng-devui/icon";
+import { NgxMarkdownEditorModule } from "@shared/components/ngx-markdown-editor/ngx-markdown-editor.module";
 
 const COMPONENT = [ArticleCreateComponent];
 
@@ -22,7 +22,7 @@ const DEVUI = [
   IconModule,
 ];
 
-const MODULE = [MarkdownEditorModule];
+const MODULE = [NgxMarkdownEditorModule];
 
 @NgModule({
   declarations: [...COMPONENT],

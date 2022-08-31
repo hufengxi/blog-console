@@ -8,5 +8,8 @@
     <d-button icon="icon-publish" style="float: right" (click)="save()">发布</d-button>
   </div>
 </div>
-<app-markdown-editor height="calc(100vh - 60px)" [formCfg]="markdownFormCfg" [markdown]="markdown">
-</app-markdown-editor>
+<!-- <app-markdown-editor height="calc(100vh - 60px)" [formCfg]="markdownFormCfg" [markdown]="markdown">
+</app-markdown-editor> -->
+
+<app-ngx-markdown-editor height="calc(100vh - 60px)" [content]="markdown" [formCfg]="markdownFormCfg">
+</app-ngx-markdown-editor>
