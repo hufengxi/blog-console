@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { CookieUtilService } from "./cookie.util";
 
 const ORIGIN = "http://localhost:3000";
+// const ORIGIN = "https://www.boruonuo.com/api/taosha";
 
 @Injectable({
   providedIn: "root",
